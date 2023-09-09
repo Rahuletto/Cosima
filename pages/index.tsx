@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { BsArrowUpShort } from "react-icons/bs";
 import { MdOutlineWaterDrop, MdSearch } from "react-icons/md";
 
+
 export default function Home() {
   const [loc, setLoc] = useState("Chennai");
   const [input, setInput] = useState("");
@@ -89,22 +90,60 @@ export default function Home() {
             </div>
           </header>
 
-          {data ? (<div className={styles.content}>
-            <div className={styles.center}>
-              <span style={{ display: "inline-flex", gap: "4px" }}>
-                <h1>{Math.ceil(data.current.temp_c)}</h1>
-                <h3>°C</h3>{" "}
-                <div
-                  className="sep"
-                  style={{ marginTop: "12px", marginLeft: "8px" }}
-                ></div>{" "}
-                <div className={styles.far}>
-                  {Math.ceil(data.current.temp_f)}°F
+          {data ? (
+            <div className={styles.content}>
+              <div className={styles.center}>
+                <span style={{ display: "inline-flex", gap: "4px" }}>
+                  <h1>{Math.ceil(data.current.temp_c)}</h1>
+                  <h3>°C</h3>{" "}
+                  <div
+                    className="sep"
+                    style={{
+                      marginTop: "12px",
+                      marginLeft: "8px",
+                      height: "38px",
+                    }}
+                  ></div>{" "}
+                  <div className={styles.far}>
+                    {Math.ceil(data.current.temp_f)}°F
+                  </div>
+                </span>
+                <h2>{data.current.condition.text}</h2>
+              </div>
+
+              <div className={styles.days}>
+                <div style={{opacity: 1, border: "4px solid #52576e"}}>
+                  <h3>Today</h3>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    <h2>{Math.ceil(data.current.temp_c)}</h2>
+                    <p>°C</p>
+                  </span>
                 </div>
-              </span>
-              <h2>{data.current.condition.text}</h2>
+
+                <div>
+                  <h3>Tom</h3>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    <h2>
+                      {Math.ceil(data.forecast.forecastday[1].day.avgtemp_c)}
+                    </h2>
+                    <p>°C</p>
+                  </span>
+                </div>
+
+                <div style={{opacity: 0.5}}>
+                  <h3>Next</h3>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    <h2>
+                      {Math.ceil(data.forecast.forecastday[2].day.avgtemp_c)}
+                    </h2>
+                    <p>°C</p>
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>) : <h1>Loading..</h1>}
+          ) : (
+            <h1 style={{ color: "var(--accent)" }}>Loading..</h1>
+          )}
         </div>
         <div className={styles.right}>
           {data ? (

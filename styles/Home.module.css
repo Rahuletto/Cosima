@@ -104,8 +104,9 @@
   height: 80vh;
   align-items: center;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  gap: 42px;
+  justify-content: center;
 }
 
 .content h1 {
@@ -115,7 +116,7 @@
 }
 
 .content h2 {
-  color: #C3CAE4;
+  color: #c3cae4;
   font-weight: 700;
   font-size: 32px;
   margin: 0;
@@ -141,6 +142,31 @@
   margin-left: 10px;
 }
 
-.center {
+.days {
+  display: flex;
+  gap: 32px;
+}
 
+.days div {
+  border-radius: 16px;
+  background: rgba(21, 23, 31, 0.73);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  gap: 6px;
+  opacity: 0.8;
+}
+
+.days div h3 {
+  font-size: 16px;
+  color: var(--dim);
+  margin: 0px;
+}
+
+.days p {
+  font-size: 16px;
+  color: var(--dim);
+  margin: 0;
 }
