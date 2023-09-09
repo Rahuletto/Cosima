@@ -48,13 +48,29 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Cosimo</title>
+        <title>Cosima</title>
         <meta
           name="description"
-          content="Cosimo, Predict the weather and plan your day"
+          content="Cosima, A beautiful yet captivating weather application in your fingertips."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cosima.vercel.app" />
+        <meta property="og:title" content='Cosima' />
+        <meta
+          property="og:description"
+          content='Cosima, A beautiful yet captivating weather application in your fingertips.'  
+        />
+        
+
+        
+        <meta
+          property="twitter:description"
+          content='Cosima, A beautiful yet captivating weather application in your fingertips.'
+          
+        />
       </Head>
       <main className={styles.main}>
         <div className={styles.left}>
