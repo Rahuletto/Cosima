@@ -99,3 +99,48 @@
   border: 0px none;
   outline: none;
 }
+
+.content {
+  height: 80vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-size: 128px;
+  margin: 0px;
+  color: var(--accent);
+}
+
+.content h2 {
+  color: #C3CAE4;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0;
+  text-align: left;
+}
+
+.content span h3 {
+  font-size: 48px;
+  color: var(--dim);
+  margin: 0px;
+}
+
+.far {
+  background: #292e454f;
+  padding: 4px 12px;
+  height: min-content;
+  font-family: var(--main-font);
+  border-radius: 8px;
+  font-weight: 700;
+  color: #666d8d;
+  font-size: 18px;
+  margin-top: 14px;
+  margin-left: 10px;
+}
+
+.center {
+
+}

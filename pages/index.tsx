@@ -88,7 +88,23 @@ export default function Home() {
               )}
             </div>
           </header>
-          
+
+          {data ? (<div className={styles.content}>
+            <div className={styles.center}>
+              <span style={{ display: "inline-flex", gap: "4px" }}>
+                <h1>{Math.ceil(data.current.temp_c)}</h1>
+                <h3>°C</h3>{" "}
+                <div
+                  className="sep"
+                  style={{ marginTop: "12px", marginLeft: "8px" }}
+                ></div>{" "}
+                <div className={styles.far}>
+                  {Math.ceil(data.current.temp_f)}°F
+                </div>
+              </span>
+              <h2>{data.current.condition.text}</h2>
+            </div>
+          </div>) : <h1>Loading..</h1>}
         </div>
         <div className={styles.right}>
           {data ? (
@@ -98,7 +114,7 @@ export default function Home() {
                   display: "flex",
                   flexDirection: "column",
                   gap: "12px",
-                  alignItems: 'center'
+                  alignItems: "center",
                 }}
               >
                 <div className={styles.name}>
