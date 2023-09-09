@@ -124,7 +124,7 @@ export default function Home() {
                     <h1>{Math.ceil(data.current.temp_c)}</h1>
                     <h3>°C</h3>{" "}
                     <div
-                      className="sep"
+                      className="sep therm"
                       style={{
                         marginTop: "12px",
                         marginLeft: "8px",

@@ -12,6 +12,10 @@
     background: #3a3a3ac7;
   }
 
+  .therm {
+    display: none !important;
+  }
+
   main {
     margin-bottom: 100px;
   }
