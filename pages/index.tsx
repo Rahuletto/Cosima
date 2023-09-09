@@ -69,7 +69,7 @@ export default function Home() {
                 onChange={(event) => setInput(event.target.value)}
               />
               <MdSearch style={{ color: "var(--accent)", fontSize: "22px" }} />
-              {autocomp && autocomp[0] && (
+              {autocomp && autocomp[0] && input != '' && (
                 <div id="search">
                   {autocomp.map((val, index) => {
                     return (
@@ -119,7 +119,7 @@ export default function Home() {
                     <Weather.WiDayCloudyGusts />
                   )}
                 </span>
-                <div style={{ display: "flex", alignItems: "baseline" }}>
+                <div style={{ display: "flex", alignItems: "baseline", flexDirection: "column" }}>
                   <span style={{ display: "inline-flex", gap: "4px" }}>
                     <h1>{Math.ceil(data.current.temp_c)}</h1>
                     <h3>°C</h3>{" "}

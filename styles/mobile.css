@@ -1,0 +1,18 @@
+@media screen and (max-width: 740px) {
+  main {
+    flex-direction: column;
+    height: auto !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #search {
+    top: initial;
+    bottom: 48px;
+    background: #3a3a3ac7;
+  }
+
+  main {
+    margin-bottom: 100px;
+  }
+}
