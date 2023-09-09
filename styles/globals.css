@@ -140,3 +140,8 @@ input::placeholder {
   background: var(--accent);
   color: var(--back);
 }
+
+.weather.icon {
+  font-size: 96px;
+  display: inline-flex;
+}

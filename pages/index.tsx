@@ -3,9 +3,10 @@ import styles from "@/styles/Home.module.css";
 
 import { useEffect, useState } from "react";
 
-import { BsArrowUpShort } from "react-icons/bs";
+import { BsArrowUpShort, BsFillMoonFill } from "react-icons/bs";
 import { MdOutlineWaterDrop, MdSearch } from "react-icons/md";
 
+import * as Weather from "react-icons/wi";
 
 export default function Home() {
   const [loc, setLoc] = useState("Chennai");
@@ -26,6 +27,7 @@ export default function Home() {
   }, [loc]);
 
   useEffect(() => {
+    if(input == '' || !input) return;
     fetch(
       `https://api.weatherapi.com/v1/search.json?key=${process.env.NEXT_PUBLIC_KEY}&q=${input}`
     )
@@ -93,26 +95,52 @@ export default function Home() {
           {data ? (
             <div className={styles.content}>
               <div className={styles.center}>
-                <span style={{ display: "inline-flex", gap: "4px" }}>
-                  <h1>{Math.ceil(data.current.temp_c)}</h1>
-                  <h3>°C</h3>{" "}
-                  <div
-                    className="sep"
-                    style={{
-                      marginTop: "12px",
-                      marginLeft: "8px",
-                      height: "38px",
-                    }}
-                  ></div>{" "}
-                  <div className={styles.far}>
-                    {Math.ceil(data.current.temp_f)}°F
-                  </div>
+                <span className="icon weather">
+                  {data.current.condition.text == "Sunny" ? (
+                    <Weather.WiDaySunny />
+                  ) : data.current.condition.text == "Clear" ? (
+                    <BsFillMoonFill />
+                  ) : data.current.condition.text == "Cloudy" ||
+                    data.current.condition.text == "Partly cloudy" ? (
+                    <Weather.WiCloudy />
+                  ) : data.current.condition.text == "Overcast" ? (
+                    <Weather.WiDaySunnyOvercast />
+                  ) : data.current.condition.text == "Mist" ? (
+                    <Weather.WiWindy />
+                  ) : data.current.condition.text.includes("Thunder") ? (
+                    <Weather.WiThunderstorm />
+                  ) : data.current.condition.text == "Fog" ? (
+                    <Weather.WiFog />
+                  ) : data.current.condition.text
+                      .toLowerCase()
+                      .includes("rain") ? (
+                    <Weather.WiRain />
+                  ) : (
+                    <Weather.WiDayCloudyGusts />
+                  )}
                 </span>
-                <h2>{data.current.condition.text}</h2>
+                <div style={{ display: "flex", alignItems: "baseline" }}>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    <h1>{Math.ceil(data.current.temp_c)}</h1>
+                    <h3>°C</h3>{" "}
+                    <div
+                      className="sep"
+                      style={{
+                        marginTop: "12px",
+                        marginLeft: "8px",
+                        height: "38px",
+                      }}
+                    ></div>{" "}
+                    <div className={styles.far}>
+                      {Math.ceil(data.current.temp_f)}°F
+                    </div>
+                  </span>
+                  <h2>{data.current.condition.text}</h2>
+                </div>
               </div>
 
               <div className={styles.days}>
-                <div style={{opacity: 1, border: "4px solid #52576e"}}>
+                <div style={{ opacity: 1, border: "4px solid #52576e" }}>
                   <h3>Today</h3>
                   <span style={{ display: "inline-flex", gap: "4px" }}>
                     <h2>{Math.ceil(data.current.temp_c)}</h2>
@@ -130,7 +158,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div style={{opacity: 0.5}}>
+                <div style={{ opacity: 0.5 }}>
                   <h3>Next</h3>
                   <span style={{ display: "inline-flex", gap: "4px" }}>
                     <h2>
@@ -157,7 +185,7 @@ export default function Home() {
                 }}
               >
                 <div className={styles.name}>
-                  <h1>{data.location.name}</h1>
+                  <h1 style={{fontSize: "1.3em"}}>{data.location.name}</h1>
                   <h3>{data.location.country}</h3>
                 </div>
 
